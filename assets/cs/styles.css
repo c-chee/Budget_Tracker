@@ -30,6 +30,7 @@ main .edit-container .add-form {
   flex-direction: column;
 }
 main .edit-container .add-form #amount-error-message {
+  color: red;
   display: none;
 }
 main #edit-income {

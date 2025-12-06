@@ -157,12 +157,13 @@ class Budget {
         }
 
         // -------- Table Logic --------
-        const newData = data[data.length -1];
+        // Grabs the last item in data array whhich in this method comes from income
+        const newData = data[data.length -1]; 
 
         // Add row to table from add form
         const newRow = document.createElement('tr');
         newRow.innerHTML = `<td>${newData.category}</td>
-                            <td>$${newData.amount}</td>
+                            <td>$${newData.amount.toFixed(2)}</td>
                             <td>${newData.notes || "-"}</td>`;
 
         // Send new to table
@@ -170,7 +171,7 @@ class Budget {
 
         // Update Total
         const total = data.reduce((sum, item) => sum + item.amount, 0);
-        displayTotal.textContent = `$${total}`;
+        displayTotal.textContent = `$${total.toFixed(2)}`;
 
     }
 
@@ -180,33 +181,42 @@ class Budget {
         const customCategoryInput = document.getElementById('custom-income-category');
         const incomeAmount = document.getElementById('income-amount');
         const incomeNotes = document.getElementById('income-notes');
-        const customIncomeContainer = document.querySelector(".custom-income-container");
+        const amountErrorMessaage = document.getElementById('amount-error-message');
 
-        let category = categorySelection.value;
-        if(category === 'custom') category = customCategoryInput.value || 'Custom';
 
-        const amount = parseFloat(incomeAmount.value);
+        let category = categorySelection.value; // Let category selected set to caategory
+
+        // If custom was selected ...
+        if(category === 'custom') {
+            // Allow the category to be users input or just Custom if left empty
+            category = customCategoryInput.value || 'Custom'
+        };
+
+        const amount = parseFloat(incomeAmount.value); // Converts the string in amount to a float
+
+        // Amount Validadtion
+        // If amount was left empty or a 0
         if (!amount || amount <= 0) {
-            customIncomeContainer.textContent = "Please enter an amount greater than $0";
-            customIncomeContainer.style.color = 'red';
-            customIncomeContainer.style.display = "flex"; // show message
+            amountErrorMessaage.textContent = "Please enter an amount greater than $0"; // Give the error message a string
+            amountErrorMessaage.style.display = "flex"; // unhide message
             return; // Return prevents the from submitting by existing method
         } 
 
+        // Grabs any notes typed to notes
         const notes = incomeNotes.value;
 
+        // Adds a new object to the income array
         this.income.push({ category, amount, notes });
 
         // Call update to add last row & update total
         this.update('income');
 
         // Reset form
-        categorySelection.value = 'paycheck';
+        categorySelection.value = 'Paycheck';
         customCategoryInput.value = '';
-        customIncomeContainer.style.display = 'none';
         incomeAmount.value = '';
         incomeNotes.value = '';
-        customIncomeContainer.style.display = "none";
+        amountErrorMessaage.style.display = "none";
     }
 
     // -- Budget Plan Selection --
