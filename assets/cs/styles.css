@@ -1,0 +1,52 @@
+html {
+  background-color: white;
+}
+
+body {
+  margin: 0;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+}
+main .display-container, main .edit-container {
+  box-sizing: border-box;
+  border: 2px solid black;
+  width: auto;
+  height: auto;
+  margin: 1em;
+  padding: 0.5em;
+  text-align: start;
+}
+main .edit-container {
+  background-color: lavender;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+}
+main .edit-container .add-form {
+  display: flex;
+  flex-direction: column;
+}
+main .edit-container .add-form #amount-error-message {
+  display: none;
+}
+main #edit-income {
+  display: none;
+}
+main #edit-income .custom-income-container {
+  display: none;
+  flex-direction: column;
+}
+main #edit-expenses {
+  display: none;
+}
+main #edit-expenses .custom-expenses-container {
+  display: none;
+  flex-direction: column;
+}
+
+/* ========================
+        BREAKPOINTS
+===========================*//*# sourceMappingURL=styles.css.map */

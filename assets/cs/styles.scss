@@ -1,0 +1,74 @@
+// Variables
+$primary-color : white;
+
+html{
+    background-color: white;
+}
+
+body{
+    margin: 0;
+}
+
+main{
+    display: flex;
+    flex-direction: column;
+
+    .display-container, .edit-container {
+        box-sizing: border-box;
+        border: 2px solid black;
+        width: auto;
+        height: auto;
+        margin: 1em;
+        padding: 0.5em;
+        text-align: start;
+    }
+
+    .edit-container {
+        background-color: lavender;
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+
+        .add-form {
+            display: flex;
+            flex-direction: column;
+
+            #amount-error-message {
+                display: none;
+            }
+        }
+    }
+
+    #edit-income {
+        display: none;
+
+        .custom-income-container {
+            display: none;
+            flex-direction: column;
+        }
+    }
+
+    #edit-expenses {
+        display: none;
+
+        .custom-expenses-container {
+            display: none;
+            flex-direction: column;
+        }
+    }
+}
+
+/* ========================
+        BREAKPOINTS
+===========================*/
+@media (min-width: 600px) {
+
+}
+
+@media (min-width: 800px) {
+
+}
+
+@media (min-width: 1000px) {
+
+}

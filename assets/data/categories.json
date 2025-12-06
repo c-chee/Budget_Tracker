@@ -1,0 +1,21 @@
+{
+    "income": [
+        "Paycheck",
+        "Savings",
+        "Tips",
+        "Custom"
+    ],
+    "expenses": [
+        "Food",
+        "Debt",
+        "Gifts",
+        "Groceries",
+        "Health-Medical",
+        "Rent",
+        "Transportation",
+        "Personal",
+        "Pet",
+        "Utilities",
+        "Custom"
+    ]
+}

@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Budget Tracker</title>
+
+    <!-- Styles Link -->
+    <link rel = 'stylesheet' href = './assets/cs/styles.css'>
+</head>
+<body>
+    <nav>
+        <!-- Title: Budget Tracker -->
+    </nav>
+
+    <main>
+        <!-- [ == TOTAL BUDGET == ] -->
+        <section class = 'display-container budget'>
+            <!-- Edit Button -->
+            <button class = 'edit-btn'>&#9998;Edit</button>
+        </section>
+
+        <section class = 'edit-container'>
+            <!--  Budget Plan Dropdown -->
+            <!-- <select name = 'budget-plan-select' id = ''>
+                <option value = '50-30-20'>50/30/20</option>
+                <option value = '50-40-10'>50/40/10</option>
+                <option value = '70-30'>70/30</option>
+                <option value = ''>Custom</option>
+            </select> -->
+
+        </section>
+
+        <!-- [ == INCOME == ] -->
+        <!-- Display Income-->
+        <section class = 'display-container income'>
+            <h2>Income</h2>
+
+            <!-- Total Monthly Income Amount -->
+            <p id = 'total-income-display'>$0</p>
+
+            <!-- ADD to Income -->
+            <button id = 'open-add-income'>ADD</button>
+
+            <!-- Expanded Section -->
+            <details id = 'income-details'>
+                <!-- Summary can change the Name/ Title for detail dropdown -->
+                <summary>Details</summary> 
+
+                <!-- Table -->
+                <table>
+                    <!-- Headings -->
+                    <thead>
+                        <tr>
+                            <th>Category</th>
+                            <th>Value</th>
+                            <th>Notes</th>
+                        </tr>
+                    </thead>
+                    <!-- Body - Contents -->
+                    <tbody id="income-table-body">
+                        <!-- Default Display -->
+                        <tr id = 'default-income'>
+                            <th>Paycheck</th>
+                            <th>$0</th>
+                            <th>-</th>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <!-- Edit Income -->
+                <section id = 'edit-income' class = 'edit-container'>
+                    <button id = 'close-add-income'> CANCEL</button>
+
+                    <!-- Form to update Income Info -->
+                    <form class = 'add-form'>
+                        <!-- Select Category -->
+                        <label>Category:</label>
+                        <select id = 'select-income-category' required>
+                            <!-- Options loadded from JSON -->
+                        </select>
+
+                        <!-- Custom Category (Hidden) -->
+                        <section class = 'custom-income-container'>
+                            <label>Custom Category:</label>
+                            <input type = 'text' id = 'custom-income-category'>
+                        </section>
+
+                        <!-- Input Value -->
+                        <label>Imcome Amount:</label>
+                        <input type = 'number' id = 'income-amount' required>
+                        <div id = 'amount-error-message'></div>
+
+                        <!-- Input Notes -->
+                        <label> Additional Notes:</label>
+                        <input type = 'text' id = 'income-notes'>
+
+                        <!-- Add and Update Income -->
+                        <button id = 'add-income' value = 'income' onclick = ''>ADD</button>
+
+                    </form>
+                </section>
+            </details>
+        </section>
+
+        <!-- [ == EXPENSES == ] -->
+        <!-- Display Expenses -->
+        <section class = 'display-container expenses'>
+            <h2>Expenses</h2>
+
+            <!-- Total Monthly Expenses Amount -->
+            <p id = 'total-expenses-display'>$0</p>
+
+            <!-- ADD to Expenses -->
+            <button id = 'open-add-expenses'>ADD</button>
+
+            <!-- Expanded Section -->
+            <details id = 'expenses-details'>
+                <!-- Summary can change the Name/ Title for detail dropdown -->
+                <summary>Details</summary> 
+
+                <!-- Table -->
+                <table>
+                    <!-- Headings -->
+                    <thead>
+                        <tr>
+                            <th>Category</th>
+                            <th>Value</th>
+                            <th>Notes</th>
+                        </tr>
+                    </thead>
+                    <!-- Body - Contents -->
+                    <tbody id="expenses-table-body">
+                        <!-- Default Display -->
+                        <tr id = 'default-expenses'>
+                            <th>Food</th>
+                            <th>$0</th>
+                            <th>-</th>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <!-- Edit Expenses -->
+                <section id = 'edit-expenses' class = 'edit-container'>
+                    <button id = 'close-add-expenses'> CANCEL</button>
+
+                    <!-- Form to update Expenses Info -->
+                    <form class = 'add-form'>
+                        <!-- Select Category -->
+                        <label>Category:</label>
+                        <select id = 'select-expenses-category' required>
+                            <!-- Option loaded from JSON -->
+                        </select>
+
+                        <!-- Custom Category (Hidden) -->
+                        <section class = 'custom-expenses-container'>
+                            <label>Custom Category:</label>
+                            <input type = 'text' id = 'custom-expenses-category'>
+                        </section>
+
+                        <!-- Input Value -->
+                        <label>Expense Amount:</label>
+                        <input type = 'number' id = 'expenses-amount' required>
+                        <div id = 'amount-error-message'></div>
+
+                        <!-- Input Notes -->
+                        <label> Additional Notes:</label>
+                        <input type = 'text' id = 'expenses-notes'>
+
+                        <!-- Add and Update Expenses -->
+                        <button id = 'add-expenses' value = 'expenses' onclick = ''>ADD</button>
+
+                    </form>
+                </section>
+            </details>
+        </section>
+
+    </main>
+
+
+    <!-- JS Link -->
+    <script src = 'assets/js/script.js'></script>
+</body>
+</html>
