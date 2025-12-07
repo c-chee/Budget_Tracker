@@ -261,7 +261,7 @@ class Budget {
             else {
                 pieData = [incomeTotal * 0.5, incomeTotal * 0.3, incomeTotal * 0.2];
                 pieLabels = ['Needs (50%)', 'Wants (30%)', 'Savings (20%)'];
-                pieColors = ['#799779', '#373A66', '#5E304E'];
+                pieColors = ['#799779', '#373A66', '#8F3A47'];
 
                 // Display Breakdown
                 breakdownDiv.innerHTML = `

@@ -394,13 +394,16 @@ main{
 
         .income {
             grid-column: 2 / 3;
-            grid-row: 1 / 2;
+            grid-row: 1 / 3;
         }
 
         .expenses {
             grid-column: 3 / 4;
-            grid-row: 1 / 2;
+            grid-row: 1 / 3;
+        }
+
+        .display-container {
+            max-width: 30em;
         }
     }
-
 }  
