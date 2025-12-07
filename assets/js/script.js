@@ -218,7 +218,7 @@ class Budget {
                     datasets: [{
                         label: 'Amount ($)',
                         data: [incomeTotal, expensesTotal], // y values
-                        backgroundColor: ['#4caf50', '#f44336']
+                        backgroundColor: ['#799779', '#8F3A47']
                     }]
                 },
                 options: {
@@ -234,6 +234,7 @@ class Budget {
         // Rule: 50 Needs/ 30 Wants/ 20 Savings
 
         const pieChart = document.getElementById('budget-breakdown-chart');
+        const breakdownDiv = document.getElementById("breakdown-number");
 
         if (pieChart) {
             const pieContext = pieChart.getContext('2d'); // Grabs 2 render
@@ -251,13 +252,25 @@ class Budget {
             if (incomeTotal === 0) {
                 pieData = [1]; // initial slice
                 pieLabels = ['No Data'];
-                pieColors = ['#cccccc']; // empty color
+                pieColors = ['#799779']; // empty color
+
+                // Display Breakdown
+                breakdownDiv.textContent = "Add income to see your budget breakdown.";
             } 
             // else load/update in data an labels
             else {
                 pieData = [incomeTotal * 0.5, incomeTotal * 0.3, incomeTotal * 0.2];
                 pieLabels = ['Needs (50%)', 'Wants (30%)', 'Savings (20%)'];
-                pieColors = ['#2196f3', '#ff9800', '#9c27b0'];
+                pieColors = ['#799779', '#373A66', '#5E304E'];
+
+                // Display Breakdown
+                breakdownDiv.innerHTML = `
+                    <p><strong>Needs (50%):</strong> $${needs.toFixed(2)}</p>
+                    <p><strong>Wants (30%):</strong> $${wants.toFixed(2)}</p>
+                    <p><strong>Savings (20%):</strong> $${savings.toFixed(2)}</p>
+                `;
+
+                breakdownDiv.style.backgroundColor = 'transparent'
             }
 
             // Create Pie Chart

@@ -1,62 +1,306 @@
-// Variables
-$primary-color : white;
+// === Variables ===
+$primary-color: #373A66; // Twilight Indigo
+$secondary-color: white;
+$lemon-chiffon: #FFF6C4;
+$tea-green: #D4F5B7;
+$light-green: #BBF38B;
+$muted-teal: #799779;
+$blackberry-cream: #5E304E;
+$dark-amaranth: #842635;
+$burnt-rose: #8F3A47;
 
-html{
-    background-color: white;
+// === Mixins ===
+@mixin gradient($color1, $color2) {
+    background: linear-gradient(to bottom, $color1, $color2);
 }
 
 body{
+    @include gradient(#c9def4, #b8a4c9);
     margin: 0;
+    font-family: 'Montserrat', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
 }
 
 main{
     display: flex;
     flex-direction: column;
+    align-items: center;
+    width: 100%;
 
-    .display-container, .edit-container {
-        box-sizing: border-box;
-        border: 2px solid black;
-        // width: auto;
+    h2 {
+        color: $primary-color;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        margin: 0.5em 0;;
+    }
+
+    .display-container {
+        width: 90%;
         max-width: 30em;
-        height: auto;
-        margin: 1em;
-        padding: 0.5em;
-        text-align: start;
-    }
-
-    .chart {
-        max-width: 80%;
-    }
-
-    .edit-container {
-        background-color: lavender;
         display: flex;
         flex-direction: column;
-        align-content: center;
+        justify-content: center;
+        align-items: center;
+        background-color: $secondary-color;
+        border-radius: 0.5em;
+        margin: 1em auto;
+        padding: 0.5em;
+        text-align: center;
 
-        .add-form {
+        .edit-container {
             display: flex;
             flex-direction: column;
+            width: 100%;
 
-            #income-error-message, #expenses-error-message  {
-                color: red;
-                display: none;
+            .add-form {
+                display: flex;
+                flex-direction: column;
+                width: 100%;
+
+                #income-error-message,
+                #expenses-error-message {
+                        color: red;
+                        display: none;
+                }
             }
         }
     }
 
-    #edit-income {
-        display: none;
+    .display-container.budget {
+        box-shadow: -4px 4px $primary-color;
+
+        .chart {
+            max-width: 85%;
+
+            h3 {
+                margin: 0;
+                font-size: 1.2em;
+                color: $primary-color;
+            }
+            
+            #goal-display {
+                margin-bottom: 2em;
+                padding: 0.5em;
+                background-color: $lemon-chiffon;
+            }
+
+            #breakdown-number {
+                margin-bottom: 2em;
+                padding: 0.5em;
+                background-color: $lemon-chiffon;
+            }
+
+            canvas {
+                padding: 1em;
+            }
+        }
+    }
+
+    .display-container.income {
+        box-shadow: -4px 4px $muted-teal;
 
         .custom-income-container {
             display: none;
             flex-direction: column;
         }
+
+        .income-add {
+            display: flex;
+            margin-bottom: 0.5em;
+
+            #total-income-display {
+                font-weight: 600;
+                font-size: 1.2em;
+            }
+
+            #total-income-display {
+                margin: 0 0.5em;
+            }
+
+            #open-add-income {
+                background: none;
+                border: 2px solid $muted-teal;
+                border-radius: 2em;
+                padding: 3px;
+                width: 5em;
+                height: auto;
+            }
+        }
+
+
+        #income-details {
+            width: 100%;
+
+            summary {
+                font-weight: 500;
+                cursor: pointer;
+                text-align: left;
+            }
+
+            table {
+                width: 100%;
+                justify-content: center;
+
+                th, td {
+                    padding: 0.5em;
+                    text-align: left;
+                }
+
+                #default-income th {
+                    font-weight: 400; // semi-bold
+                }
+
+            }
+
+            .edit-container {
+                width: 90%;
+                padding: 1em;
+                background-color: #79977962;
+                border: 2px solid $muted-teal;
+                border-radius: 0.5em;
+                gap: 0.5em;
+
+                label {
+                    margin-top: 0.7em;
+                    font-weight: 500;
+                    text-align: center;
+                }
+
+                select,
+                input {
+                    height: 2em;
+                    font-size: 15px;
+                }
+
+                #close-add-income {
+                    width: 7em;
+                    align-self: flex-end;
+                    background: none;
+                    border: 2px solid $muted-teal;
+                    border-radius: 2em;
+                    padding: 3px;
+                }
+
+                #add-income {
+                    margin: 0.7em;
+                    width: 5em;
+                    border-radius: 2em;
+                    align-self: center;
+                    padding: 3px;
+                    background-color: $muted-teal;
+                    color: $secondary-color;
+                    border: 1px solid $muted-teal;
+                }
+            }
+        }
     }
 
+    .display-container.expenses{
+        box-shadow: -4px 4px $dark-amaranth;
+
+        .custom-expenses-container {
+            display: none;
+            flex-direction: column;
+        }
+
+        .expenses-add {
+            display: flex;
+            margin-bottom: 0.5em;
+
+            #total-expenses-display {
+                font-weight: 600;
+                font-size: 1.2em;
+            }
+
+            #total-expenses-display {
+                margin: 0 0.5em;
+            }
+
+            #open-add-expenses {
+                background: none;
+                border: 2px solid $dark-amaranth;
+                border-radius: 2em;
+                padding: 3px;
+                width: 5em;
+                height: auto;
+            }
+        }
+
+
+        #expenses-details {
+            width: 100%;
+
+            summary {
+                font-weight: 500;
+                cursor: pointer;
+                text-align: left;
+            }
+
+            table {
+                width: 100%;
+                justify-content: center;
+
+                th, td {
+                    padding: 0.5em;
+                    text-align: left;
+                }
+
+                #default-expenses th {
+                    font-weight: 400; // semi-bold
+                }
+            }
+
+            .edit-container {
+                width: 90%;
+                padding: 1em;
+                background-color: #8426364f;
+                border: 2px solid $dark-amaranth;
+                border-radius: 0.5em;
+                gap: 0.5em;
+
+                label {
+                    margin-top: 0.7em;
+                    font-weight: 500;
+                    text-align: center;
+                }
+
+                select,
+                input {
+                    height: 2em;
+                    font-size: 15px;
+                }
+
+                #close-add-expenses {
+                    width: 7em;
+                    align-self: flex-end;
+                    background: none;
+                    border: 2px solid $dark-amaranth;
+                    border-radius: 2em;
+                    padding: 3px;
+                }
+
+                #add-expenses {
+                    margin: 0.7em;
+                    width: 5em;
+                    border-radius: 2em;
+                    align-self: center;
+                    padding: 3px;
+                    background-color: $dark-amaranth;
+                    color: $secondary-color;
+                    border: 1px solid $dark-amaranth;
+                }
+            }
+        }
+    }
+
+
+    #edit-income,
     #edit-expenses {
         display: none;
 
+        .custom-income-container,
         .custom-expenses-container {
             display: none;
             flex-direction: column;

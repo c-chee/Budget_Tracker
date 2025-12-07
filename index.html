@@ -5,6 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Budget Tracker</title>
 
+    <!-- Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Walter+Turncoat&display=swap" rel="stylesheet">
+
     <!-- Styles Link -->
     <link rel = 'stylesheet' href = './assets/cs/styles.css'>
 
@@ -24,14 +29,15 @@
             <h2>Total Budget</h2>
 
             <section class = 'chart'>
-                <h3>Income vs Expenses</h3>
+                <h3>- Income vs Expenses -</h3>
                 <canvas id = 'total-comparison-chart'></canvas>
                 <div id = 'goal-display'></div>
             </section>
 
             <section class = 'chart'>
-                <h3>50 / 30 / 20 Budget Breakdown</h3>
+                <h3>- 50/30/20 Budget Breakdown -</h3>
                 <canvas id="budget-breakdown-chart"></canvas>
+                <div id = 'breakdown-number'></div>
             </section>
             
 
@@ -44,11 +50,13 @@
         <section class = 'display-container income'>
             <h2>Income</h2>
 
-            <!-- Total Monthly Income Amount -->
-            <p id = 'total-income-display'>$0</p>
+            <div class = 'income-add'>
+                <!-- Total Monthly Income Amount -->
+                <p id = 'total-income-display'>$0</p>
 
-            <!-- ADD to Income -->
-            <button id = 'open-add-income'>ADD</button>
+                <!-- ADD to Income -->
+                <button id = 'open-add-income'>ADD</button>
+            </div>
 
             <!-- Expanded Section -->
             <details id = 'income-details'>
@@ -95,7 +103,7 @@
                         </section>
 
                         <!-- Input Value -->
-                        <label>Imcome Amount:</label>
+                        <label>Income Amount:</label>
                         <input type = 'number' id = 'income-amount' required>
                         <div id = 'income-error-message'></div>
 
@@ -116,11 +124,13 @@
         <section class = 'display-container expenses'>
             <h2>Expenses</h2>
 
-            <!-- Total Monthly Expenses Amount -->
-            <p id = 'total-expenses-display'>$0</p>
+            <div class = 'expenses-add'>
+                <!-- Total Monthly Expenses Amount -->
+                <p id = 'total-expenses-display'>$0</p>
 
-            <!-- ADD to Expenses -->
-            <button id = 'open-add-expenses'>ADD</button>
+                <!-- ADD to Expenses -->
+                <button id = 'open-add-expenses'>ADD</button>
+            </div>
 
             <!-- Expanded Section -->
             <details id = 'expenses-details'>

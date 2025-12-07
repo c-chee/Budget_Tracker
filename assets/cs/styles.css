@@ -1,51 +1,245 @@
-html {
-  background-color: white;
-}
-
 body {
+  background: linear-gradient(to bottom, #c9def4, #b8a4c9);
   margin: 0;
+  font-family: "Montserrat", sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
 }
 
 main {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  width: 100%;
 }
-main .display-container, main .edit-container {
-  box-sizing: border-box;
-  border: 2px solid black;
+main h2 {
+  color: #373A66;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0.5em 0;
+}
+main .display-container {
+  width: 90%;
   max-width: 30em;
-  height: auto;
-  margin: 1em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  border-radius: 0.5em;
+  margin: 1em auto;
   padding: 0.5em;
-  text-align: start;
+  text-align: center;
 }
-main .chart {
-  max-width: 80%;
-}
-main .edit-container {
-  background-color: lavender;
+main .display-container .edit-container {
   display: flex;
   flex-direction: column;
-  align-content: center;
+  width: 100%;
 }
-main .edit-container .add-form {
+main .display-container .edit-container .add-form {
   display: flex;
   flex-direction: column;
+  width: 100%;
 }
-main .edit-container .add-form #income-error-message, main .edit-container .add-form #expenses-error-message {
+main .display-container .edit-container .add-form #income-error-message,
+main .display-container .edit-container .add-form #expenses-error-message {
   color: red;
   display: none;
 }
-main #edit-income {
-  display: none;
+main .display-container.budget {
+  box-shadow: -4px 4px #373A66;
 }
-main #edit-income .custom-income-container {
+main .display-container.budget .chart {
+  max-width: 85%;
+}
+main .display-container.budget .chart h3 {
+  margin: 0;
+  font-size: 1.2em;
+  color: #373A66;
+}
+main .display-container.budget .chart #goal-display {
+  margin-bottom: 2em;
+  padding: 0.5em;
+  background-color: #FFF6C4;
+}
+main .display-container.budget .chart #breakdown-number {
+  margin-bottom: 2em;
+  padding: 0.5em;
+  background-color: #FFF6C4;
+}
+main .display-container.budget .chart canvas {
+  padding: 1em;
+}
+main .display-container.income {
+  box-shadow: -4px 4px #799779;
+}
+main .display-container.income .custom-income-container {
   display: none;
   flex-direction: column;
 }
+main .display-container.income .income-add {
+  display: flex;
+  margin-bottom: 0.5em;
+}
+main .display-container.income .income-add #total-income-display {
+  font-weight: 600;
+  font-size: 1.2em;
+}
+main .display-container.income .income-add #total-income-display {
+  margin: 0 0.5em;
+}
+main .display-container.income .income-add #open-add-income {
+  background: none;
+  border: 2px solid #799779;
+  border-radius: 2em;
+  padding: 3px;
+  width: 5em;
+  height: auto;
+}
+main .display-container.income #income-details {
+  width: 100%;
+}
+main .display-container.income #income-details summary {
+  font-weight: 500;
+  cursor: pointer;
+  text-align: left;
+}
+main .display-container.income #income-details table {
+  width: 100%;
+  justify-content: center;
+}
+main .display-container.income #income-details table th, main .display-container.income #income-details table td {
+  padding: 0.5em;
+  text-align: left;
+}
+main .display-container.income #income-details table #default-income th {
+  font-weight: 400;
+}
+main .display-container.income #income-details .edit-container {
+  width: 90%;
+  padding: 1em;
+  background-color: rgba(121, 151, 121, 0.3843137255);
+  border: 2px solid #799779;
+  border-radius: 0.5em;
+  gap: 0.5em;
+}
+main .display-container.income #income-details .edit-container label {
+  margin-top: 0.7em;
+  font-weight: 500;
+  text-align: center;
+}
+main .display-container.income #income-details .edit-container select,
+main .display-container.income #income-details .edit-container input {
+  height: 2em;
+  font-size: 15px;
+}
+main .display-container.income #income-details .edit-container #close-add-income {
+  width: 7em;
+  align-self: flex-end;
+  background: none;
+  border: 2px solid #799779;
+  border-radius: 2em;
+  padding: 3px;
+}
+main .display-container.income #income-details .edit-container #add-income {
+  margin: 0.7em;
+  width: 5em;
+  border-radius: 2em;
+  align-self: center;
+  padding: 3px;
+  background-color: #799779;
+  color: white;
+  border: 1px solid #799779;
+}
+main .display-container.expenses {
+  box-shadow: -4px 4px #842635;
+}
+main .display-container.expenses .custom-expenses-container {
+  display: none;
+  flex-direction: column;
+}
+main .display-container.expenses .expenses-add {
+  display: flex;
+  margin-bottom: 0.5em;
+}
+main .display-container.expenses .expenses-add #total-expenses-display {
+  font-weight: 600;
+  font-size: 1.2em;
+}
+main .display-container.expenses .expenses-add #total-expenses-display {
+  margin: 0 0.5em;
+}
+main .display-container.expenses .expenses-add #open-add-expenses {
+  background: none;
+  border: 2px solid #842635;
+  border-radius: 2em;
+  padding: 3px;
+  width: 5em;
+  height: auto;
+}
+main .display-container.expenses #expenses-details {
+  width: 100%;
+}
+main .display-container.expenses #expenses-details summary {
+  font-weight: 500;
+  cursor: pointer;
+  text-align: left;
+}
+main .display-container.expenses #expenses-details table {
+  width: 100%;
+  justify-content: center;
+}
+main .display-container.expenses #expenses-details table th, main .display-container.expenses #expenses-details table td {
+  padding: 0.5em;
+  text-align: left;
+}
+main .display-container.expenses #expenses-details table #default-expenses th {
+  font-weight: 400;
+}
+main .display-container.expenses #expenses-details .edit-container {
+  width: 90%;
+  padding: 1em;
+  background-color: rgba(132, 38, 54, 0.3098039216);
+  border: 2px solid #842635;
+  border-radius: 0.5em;
+  gap: 0.5em;
+}
+main .display-container.expenses #expenses-details .edit-container label {
+  margin-top: 0.7em;
+  font-weight: 500;
+  text-align: center;
+}
+main .display-container.expenses #expenses-details .edit-container select,
+main .display-container.expenses #expenses-details .edit-container input {
+  height: 2em;
+  font-size: 15px;
+}
+main .display-container.expenses #expenses-details .edit-container #close-add-expenses {
+  width: 7em;
+  align-self: flex-end;
+  background: none;
+  border: 2px solid #842635;
+  border-radius: 2em;
+  padding: 3px;
+}
+main .display-container.expenses #expenses-details .edit-container #add-expenses {
+  margin: 0.7em;
+  width: 5em;
+  border-radius: 2em;
+  align-self: center;
+  padding: 3px;
+  background-color: #842635;
+  color: white;
+  border: 1px solid #842635;
+}
+main #edit-income,
 main #edit-expenses {
   display: none;
 }
+main #edit-income .custom-income-container,
+main #edit-income .custom-expenses-container,
+main #edit-expenses .custom-income-container,
 main #edit-expenses .custom-expenses-container {
   display: none;
   flex-direction: column;
