@@ -106,7 +106,10 @@ class Budget {
         let category = categorySelection.value; // Let category selected set to caategory
 
         // If custom was selected ...
-        if(category === 'custom') {
+        if(category === 'Custom') {
+            // Display custom container
+            customIncomeContainer.style.display = 'flex';
+
             // Allow the category to be users input or just Custom if left empty
             category = customCategoryInput.value || 'Custom'
         };
@@ -116,8 +119,8 @@ class Budget {
         // Amount Validadtion
         // If amount was left empty or a 0
         if (!amount || amount <= 0) {
-            incomeErrorMessaage.textContent = "Please enter an amount greater than $0"; // Give the error message a string
-            incomeErrorMessaage.style.display = "flex"; // unhide message
+            incomeErrorMessaage.textContent = 'Please enter an amount greater than $0'; // Give the error message a string
+            incomeErrorMessaage.style.display = 'flex'; // unhide message
             return; // Return prevents the from submitting by existing method
         } 
 
@@ -153,7 +156,10 @@ class Budget {
         let category = categorySelection.value; // Let category selected set to caategory
 
         // If custom was selected ...
-        if(category === 'custom') {
+        if(category === 'Custom') {
+            // Display custom container
+            customExpensesContainer.style.display = 'flex';
+
             // Allow the category to be users input or just Custom if left empty
             category = customCategoryInput.value || 'Custom'
         };
@@ -163,8 +169,8 @@ class Budget {
         // Amount Validadtion
         // If amount was left empty or a 0
         if (!amount || amount <= 0) {
-            expenseErrorMessaage.textContent = "Please enter an amount greater than $0"; // Give the error message a string
-            expenseErrorMessaage.style.display = "flex"; // unhide message
+            expenseErrorMessaage.textContent = 'Please enter an amount greater than $0'; // Give the error message a string
+            expenseErrorMessaage.style.display = 'flex'; // unhide message
             return; // Return prevents the from submitting by existing method
         } 
 
@@ -185,7 +191,7 @@ class Budget {
         customCategoryInput.value = '';
         expenseAmount.value = '';
         expeneseNotes.value = '';
-        expenseErrorMessaage.style.display = "none";
+        expenseErrorMessaage.style.display = 'none';
     }
 
     // -- Budget Chart --
@@ -238,6 +244,7 @@ class Budget {
             const savings = incomeTotal * 0.20; // 20%
 
             // --- Handles initial empty data ---
+            // (For the first render)
             let pieData, pieLabels, pieColors;
 
             // if income is 0
@@ -284,7 +291,7 @@ class Budget {
 const calculateBudget = new Budget();
 
 
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener('DOMContentLoaded', () => {
     // [ Load Categories from JSON]
     // Load categories from JSON
     fetch('assets/data/categories.json')
@@ -334,7 +341,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // When Custom category is selcted, open custom field
     selectIncomeCategory.addEventListener('change', () => {
         // If the value selected is custom(the value), display hidden custom section
-        if(selectIncomeCategory.value === "custom") {
+        if(selectIncomeCategory.value === 'Custom') {
             customIncomeContainer.style.display = 'flex';
         }
         // Else, leave section hidden
@@ -344,7 +351,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     selectExpensesCategory.addEventListener('change', () => {
-        if(selectExpensesCategory.value === "custom") {
+        if(selectExpensesCategory.value === 'Custom') {
             customExpensesContainer.style.display = 'flex';
         }
         else {
