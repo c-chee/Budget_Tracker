@@ -38,7 +38,7 @@ main{
 
     .display-container {
         width: 90%;
-        max-width: 30em;
+        max-width: 25em;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -312,6 +312,40 @@ main{
         BREAKPOINTS
 ===========================*/
 @media (min-width: 600px) {
+    // -- Income --
+    #open-add-income,
+    #close-add-income,
+    #add-income {
+        cursor: pointer;
+        transition: all 0.3s ease;
+
+        &:hover {
+            color: $muted-teal;
+            transform: scale(1.02);
+        }
+    }
+
+    // -- Expenses --
+    #open-add-expenses,
+    #close-add-expenses,
+    #add-expenses {
+        cursor: pointer;
+        transition: all 0.3s ease;
+
+        &:hover {
+            color: $dark-amaranth;
+            transform: scale(1.02);
+        }
+    }
+
+    .add-form {
+        select {
+            &:hover {
+                cursor: pointer;
+            }
+        }
+    }
+
 
 }
 

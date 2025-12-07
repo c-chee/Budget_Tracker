@@ -21,7 +21,7 @@ main h2 {
 }
 main .display-container {
   width: 90%;
-  max-width: 30em;
+  max-width: 25em;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -247,4 +247,33 @@ main #edit-expenses .custom-expenses-container {
 
 /* ========================
         BREAKPOINTS
-===========================*//*# sourceMappingURL=styles.css.map */
+===========================*/
+@media (min-width: 600px) {
+  #open-add-income,
+  #close-add-income,
+  #add-income {
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  #open-add-income:hover,
+  #close-add-income:hover,
+  #add-income:hover {
+    color: #799779;
+    transform: scale(1.02);
+  }
+  #open-add-expenses,
+  #close-add-expenses,
+  #add-expenses {
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  #open-add-expenses:hover,
+  #close-add-expenses:hover,
+  #add-expenses:hover {
+    color: #842635;
+    transform: scale(1.02);
+  }
+  .add-form select:hover {
+    cursor: pointer;
+  }
+}/*# sourceMappingURL=styles.css.map */
