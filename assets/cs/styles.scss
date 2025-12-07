@@ -295,7 +295,6 @@ main{
         }
     }
 
-
     #edit-income,
     #edit-expenses {
         display: none;
@@ -306,12 +305,33 @@ main{
             flex-direction: column;
         }
     }
+
+    .delete-row-btn{
+        cursor: pointer;
+        color: $burnt-rose;
+        background-color: transparent;
+        border: 2px solid $burnt-rose;
+        border-radius: 2em;
+        font-weight: 500;
+
+        &:hover {
+            background-color: #8f3a4750;
+        }
+    }
 }
 
 /* ========================
         BREAKPOINTS
 ===========================*/
 @media (min-width: 600px) {
+    .delete-row-btn{
+        cursor: pointer;
+
+        &:hover {
+            background-color: #8f3a4750;
+        }
+    }
+    
     // -- Income --
     #open-add-income,
     #close-add-income,

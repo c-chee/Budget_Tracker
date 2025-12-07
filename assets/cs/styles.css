@@ -244,11 +244,28 @@ main #edit-expenses .custom-expenses-container {
   display: none;
   flex-direction: column;
 }
+main .delete-row-btn {
+  cursor: pointer;
+  color: #8F3A47;
+  background-color: transparent;
+  border: 2px solid #8F3A47;
+  border-radius: 2em;
+  font-weight: 500;
+}
+main .delete-row-btn:hover {
+  background-color: rgba(143, 58, 71, 0.3137254902);
+}
 
 /* ========================
         BREAKPOINTS
 ===========================*/
 @media (min-width: 600px) {
+  .delete-row-btn {
+    cursor: pointer;
+  }
+  .delete-row-btn:hover {
+    background-color: rgba(143, 58, 71, 0.3137254902);
+  }
   #open-add-income,
   #close-add-income,
   #add-income {

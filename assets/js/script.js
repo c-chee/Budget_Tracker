@@ -3,8 +3,8 @@ const openAddIncome = document.getElementById('open-add-income');
 const closeAddIncome = document.getElementById('close-add-income');
 const editIncome = document.getElementById('edit-income');
 const openIncomeDetail = document.getElementById('income-details');
-const selectIncomeCategory = document.getElementById("select-income-category");
-const customIncomeContainer = document.querySelector(".custom-income-container"); // Called here to unhide container
+const selectIncomeCategory = document.getElementById('select-income-category');
+const customIncomeContainer = document.querySelector('.custom-income-container'); // Called here to unhide container
 const updateIncomeTable = document.getElementById('add-income');
 
 // === Expenses ===
@@ -12,8 +12,8 @@ const openAddExpenses = document.getElementById('open-add-expenses');
 const closeAddExpenses = document.getElementById('close-add-expenses');
 const editExpenses = document.getElementById('edit-expenses');
 const openExpensesDetails = document.getElementById('expenses-details');
-const selectExpensesCategory = document.getElementById("select-expenses-category");
-const customExpensesContainer = document.querySelector(".custom-expenses-container"); // Called here to unhide container
+const selectExpensesCategory = document.getElementById('select-expenses-category');
+const customExpensesContainer = document.querySelector('.custom-expenses-container'); // Called here to unhide container
 const updateExpensesTable = document.getElementById('add-expenses');
 
 // == Total Budget ==
@@ -83,16 +83,33 @@ class Budget {
         const newRow = document.createElement('tr');
         newRow.innerHTML = `<td>${newData.category}</td>
                             <td>$${newData.amount.toFixed(2)}</td>
-                            <td>${newData.notes || "-"}</td>`;
+                            <td>${newData.notes || '-'}</td>
+                            <td><button class = 'delete-row-btn'>X</button></td>`; // Add in a delete buttoon for every row added
 
         // Send new to table
         tableContent.appendChild(newRow);
 
+        // -- Delete Row Logic --
+        const deleteRow = newRow.querySelector('.delete-row-btn'); // Created from when the new row is added
+        deleteRow.addEventListener('click', () => { // Click listener for the delete button
+            
+            const index = data.indexOf(newData); // Locates the position of array
+
+            data.splice(index, 1); // Removes the one row element at the iniddex position
+
+            // Remove row from DOM
+            newRow.remove();
+
+            // Update totals and charts
+            this.updateCharts();
+
+        });
+
         // Update Total
         const total = data.reduce((sum, item) => sum + item.amount, 0);
         displayTotal.textContent = `$${total.toFixed(2)}`;
-
     }
+
     
     // -- Income --
     addIncome() {
@@ -141,7 +158,7 @@ class Budget {
         customCategoryInput.value = '';
         incomeAmount.value = '';
         incomeNotes.value = '';
-        incomeErrorMessaage.style.display = "none";
+        incomeErrorMessaage.style.display = 'none';
     }
 
     // -- Expenses --
@@ -234,7 +251,7 @@ class Budget {
         // Rule: 50 Needs/ 30 Wants/ 20 Savings
 
         const pieChart = document.getElementById('budget-breakdown-chart');
-        const breakdownDiv = document.getElementById("breakdown-number");
+        const breakdownDiv = document.getElementById('breakdown-number');
 
         if (pieChart) {
             const pieContext = pieChart.getContext('2d'); // Grabs 2 render
@@ -255,7 +272,7 @@ class Budget {
                 pieColors = ['#799779']; // empty color
 
                 // Display Breakdown
-                breakdownDiv.textContent = "Add income to see your budget breakdown.";
+                breakdownDiv.textContent = 'Add income to see your budget breakdown.';
             } 
             // else load/update in data an labels
             else {
@@ -297,11 +314,11 @@ class Budget {
             // Handle the intial render to not say goal met
             // Handle income only bc expenses can be 0
             case incomeTotal === 0:
-                goalDiv.textContent = "No income added yet. Add some income to meet your budget!";
+                goalDiv.textContent = 'No income added yet. Add some income to meet your budget!';
                 break;
             // If income and expenses match
             case difference === 0:
-                goalDiv.textContent = "Goal met! Your income perfectly covers your expenses.";
+                goalDiv.textContent = 'Goal met! Your income perfectly covers your expenses.';
                 break;
             // If you made more than expenses, income > expenses
             case difference > 0:
@@ -313,7 +330,7 @@ class Budget {
                 break;
             // Default, to handle other errors
             default:
-                goalDiv.textContent = "Goal status unknown.";
+                goalDiv.textContent = 'Goal status unknown.';
         }
         
     }
@@ -345,7 +362,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function loadSelectOptions(selectId, items) {
         const select = document.getElementById(selectId);
-        select.innerHTML = ""; // clear existing options
+        select.innerHTML = ''; // clear existing options
 
         items.forEach(item => {
             const option = document.createElement('option');
