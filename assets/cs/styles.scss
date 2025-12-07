@@ -350,9 +350,57 @@ main{
 }
 
 @media (min-width: 800px) {
+    main {
+        display: grid;
+        grid-template-columns: 1fr 1fr; // Left: Budget, Right: Income + Expenses
+        grid-template-rows: auto auto; // Rows for stacking Income and Expenses
+        gap: 1em;
+        width: 100%;
+        padding: 1em;
 
+        // Place the grid items
+        .budget {
+            grid-column: 1 / 2;
+            grid-row: 1 / 3;
+        }
+
+        .income {
+            grid-column: 2 / 3;
+            grid-row: 1 / 2;
+        }
+
+        .expenses {
+            grid-column: 2 / 3;
+            grid-row: 2 / 3;
+        }
+    }
 }
 
 @media (min-width: 1000px) {
+    main {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: auto auto;
+        gap: 1em;
+        width: 100%;
+        padding: 1em;
+        align-items: flex-start;
 
-}
+        // Place the grid items
+        .budget {
+            grid-column: 1 / 2;
+            grid-row: 1 / 3;
+        }
+
+        .income {
+            grid-column: 2 / 3;
+            grid-row: 1 / 2;
+        }
+
+        .expenses {
+            grid-column: 3 / 4;
+            grid-row: 1 / 2;
+        }
+    }
+
+}  

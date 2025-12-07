@@ -276,4 +276,49 @@ main #edit-expenses .custom-expenses-container {
   .add-form select:hover {
     cursor: pointer;
   }
+}
+@media (min-width: 800px) {
+  main {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+    gap: 1em;
+    width: 100%;
+    padding: 1em;
+  }
+  main .budget {
+    grid-column: 1/2;
+    grid-row: 1/3;
+  }
+  main .income {
+    grid-column: 2/3;
+    grid-row: 1/2;
+  }
+  main .expenses {
+    grid-column: 2/3;
+    grid-row: 2/3;
+  }
+}
+@media (min-width: 1000px) {
+  main {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: auto auto;
+    gap: 1em;
+    width: 100%;
+    padding: 1em;
+    align-items: flex-start;
+  }
+  main .budget {
+    grid-column: 1/2;
+    grid-row: 1/3;
+  }
+  main .income {
+    grid-column: 2/3;
+    grid-row: 1/2;
+  }
+  main .expenses {
+    grid-column: 3/4;
+    grid-row: 1/2;
+  }
 }/*# sourceMappingURL=styles.css.map */
