@@ -29,7 +29,7 @@ main .edit-container .add-form {
   display: flex;
   flex-direction: column;
 }
-main .edit-container .add-form #amount-error-message {
+main .edit-container .add-form #income-error-message, main .edit-container .add-form #expenses-error-message {
   color: red;
   display: none;
 }

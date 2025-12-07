@@ -75,7 +75,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
         // Else, leave section hidden
         else {
-            customIncomeContainer.display = 'none';
+            customIncomeContainer.style.display = 'none';
         }
     });
 
@@ -84,7 +84,7 @@ document.addEventListener("DOMContentLoaded", () => {
             customExpensesContainer.style.display = 'flex';
         }
         else {
-            customExpensesContainer.display = 'none';
+            customExpensesContainer.style.display = 'none';
         }
     });
 
@@ -97,9 +97,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // [ ADD Expenses ]
     updateExpensesTable.addEventListener('click', (event) => {
-        // Prevent pagge from reloading to defualt, otherwise totals/ew inputs are not saved.
+        // Prevent pagge from reloading to defualt, otherwise total inputs are not saved.
         event.preventDefault();
-        calculateBudget.addIncome();
+        calculateBudget.addExpenses();
     });
 
 });
@@ -146,11 +146,12 @@ class Budget {
         // Else category is Expenses
         else {
             // Set everything to expenses id's
-            data = this.income;
+            data = this.expenses;
             tableContent = document.getElementById('expenses-table-body');
             displayTotal = document.getElementById('total-expenses-display');
 
             // Removes default row if it exists
+            const defaultExpensesRow = document.getElementById('default-expenses');
             if(defaultExpensesRow){
                 defaultExpensesRow.remove()
             };
@@ -174,14 +175,14 @@ class Budget {
         displayTotal.textContent = `$${total.toFixed(2)}`;
 
     }
-
+    
     // -- Income --
     addIncome() {
         const categorySelection = document.getElementById('select-income-category');
         const customCategoryInput = document.getElementById('custom-income-category');
         const incomeAmount = document.getElementById('income-amount');
         const incomeNotes = document.getElementById('income-notes');
-        const amountErrorMessaage = document.getElementById('amount-error-message');
+        const incomeErrorMessaage = document.getElementById('income-error-message');
 
 
         let category = categorySelection.value; // Let category selected set to caategory
@@ -197,8 +198,8 @@ class Budget {
         // Amount Validadtion
         // If amount was left empty or a 0
         if (!amount || amount <= 0) {
-            amountErrorMessaage.textContent = "Please enter an amount greater than $0"; // Give the error message a string
-            amountErrorMessaage.style.display = "flex"; // unhide message
+            incomeErrorMessaage.textContent = "Please enter an amount greater than $0"; // Give the error message a string
+            incomeErrorMessaage.style.display = "flex"; // unhide message
             return; // Return prevents the from submitting by existing method
         } 
 
@@ -216,7 +217,51 @@ class Budget {
         customCategoryInput.value = '';
         incomeAmount.value = '';
         incomeNotes.value = '';
-        amountErrorMessaage.style.display = "none";
+        incomeErrorMessaage.style.display = "none";
+    }
+
+    // -- Expenses --
+    addExpenses() {
+        const categorySelection = document.getElementById('select-expenses-category');
+        const customCategoryInput = document.getElementById('custom-expenses-category');
+        const expenseAmount = document.getElementById('expenses-amount');
+        const expeneseNotes = document.getElementById('expenses-notes');
+        const expenseErrorMessaage = document.getElementById('expenses-error-message');
+
+
+        let category = categorySelection.value; // Let category selected set to caategory
+
+        // If custom was selected ...
+        if(category === 'custom') {
+            // Allow the category to be users input or just Custom if left empty
+            category = customCategoryInput.value || 'Custom'
+        };
+
+        const amount = parseFloat(expenseAmount.value); // Converts the string in amount to a float
+
+        // Amount Validadtion
+        // If amount was left empty or a 0
+        if (!amount || amount <= 0) {
+            expenseErrorMessaage.textContent = "Please enter an amount greater than $0"; // Give the error message a string
+            expenseErrorMessaage.style.display = "flex"; // unhide message
+            return; // Return prevents the from submitting by existing method
+        } 
+
+        // Grabs any notes typed to notes
+        const notes = expeneseNotes.value;
+
+        // Adds a new object to the income array
+        this.expenses.push({ category, amount, notes });
+
+        // Call update to add last row & update total
+        this.update('expenses');
+
+        // Reset form
+        categorySelection.value = 'Food'; // First option
+        customCategoryInput.value = '';
+        expenseAmount.value = '';
+        expeneseNotes.value = '';
+        expenseErrorMessaage.style.display = "none";
     }
 
     // -- Budget Plan Selection --

@@ -33,7 +33,7 @@ main{
             display: flex;
             flex-direction: column;
 
-            #amount-error-message {
+            #income-error-message, #expenses-error-message  {
                 color: red;
                 display: none;
             }
