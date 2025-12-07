@@ -282,20 +282,21 @@ class Budget {
 
         switch (true) {
             // Handle the intial render to not say goal met
+            // Handle income only bc expenses can be 0
             case incomeTotal === 0:
-                goalDiv.textContent = "No income added yet. Add your income to track your budget!";
+                goalDiv.textContent = "No income added yet. Add some income to meet your budget!";
                 break;
             // If income and expenses match
             case difference === 0:
-                goalDiv.textContent = "Goal met! Your income exactly covers your expenses.";
+                goalDiv.textContent = "Goal met! Your income perfectly covers your expenses.";
                 break;
             // If you made more than expenses, income > expenses
             case difference > 0:
-                goalDiv.textContent = `Goal exceeded! You have $${difference.toFixed(2)} more than your expenses. 🎉`;
+                goalDiv.textContent = `Goal exceeded! You have $${difference.toFixed(2)} more than your expenses.`;
                 break;
             // If you made less than expenses, income < expenses
             case difference < 0:
-                goalDiv.textContent = `Goal not met! You are $${Math.abs(difference).toFixed(2)} short of covering your expenses.`;
+                goalDiv.textContent = `Goal not met :( You are $${Math.abs(difference).toFixed(2)} short of covering your expenses!`;
                 break;
             // Default, to handle other errors
             default:
