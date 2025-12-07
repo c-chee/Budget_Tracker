@@ -16,11 +16,16 @@ main{
     .display-container, .edit-container {
         box-sizing: border-box;
         border: 2px solid black;
-        width: auto;
+        // width: auto;
+        max-width: 30em;
         height: auto;
         margin: 1em;
         padding: 0.5em;
         text-align: start;
+    }
+
+    .chart {
+        max-width: 80%;
     }
 
     .edit-container {

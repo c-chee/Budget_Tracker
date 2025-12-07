@@ -7,6 +7,9 @@
 
     <!-- Styles Link -->
     <link rel = 'stylesheet' href = './assets/cs/styles.css'>
+
+    <!-- Chart.js -->
+    <script src = 'https://cdn.jsdelivr.net/npm/chart.js'></script>
 </head>
 <body>
     <nav>
@@ -17,17 +20,21 @@
         <!-- [ == TOTAL BUDGET == ] -->
         <section class = 'display-container budget'>
             <!-- Edit Button -->
-            <button class = 'edit-btn'>&#9998;Edit</button>
-        </section>
+            <!-- <button class = 'edit-btn'>&#9998;Edit</button> -->
+            <h2>Total Budget</h2>
 
-        <section class = 'edit-container'>
-            <!--  Budget Plan Dropdown -->
-            <!-- <select name = 'budget-plan-select' id = ''>
-                <option value = '50-30-20'>50/30/20</option>
-                <option value = '50-40-10'>50/40/10</option>
-                <option value = '70-30'>70/30</option>
-                <option value = ''>Custom</option>
-            </select> -->
+            <section class = 'chart'>
+                <h3>Income vs Expenses</h3>
+                <canvas id = 'total-comparison-chart'></canvas>
+            </section>
+
+            <section class = 'chart'>
+                <h3>50 / 30 / 20 Budget Breakdown</h3>
+                <canvas id="budget-breakdown-chart"></canvas>
+            </section>
+            
+
+        </section>
 
         </section>
 

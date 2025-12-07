@@ -13,11 +13,14 @@ main {
 main .display-container, main .edit-container {
   box-sizing: border-box;
   border: 2px solid black;
-  width: auto;
+  max-width: 30em;
   height: auto;
   margin: 1em;
   padding: 0.5em;
   text-align: start;
+}
+main .chart {
+  max-width: 80%;
 }
 main .edit-container {
   background-color: lavender;
